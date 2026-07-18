@@ -1,0 +1,326 @@
+.section {
+  width: 100%;
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Top Area: same style as Industries ─── */
+.topArea {
+  background-color: #360707;
+  background-image: url("data:image/svg+xml,%3Csvg width='45' height='45' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 50 0 L 0 0 0 50' fill='none' stroke='%23000000' stroke-width='3.5' stroke-dasharray='2,4'/%3E%3C/svg%3E");
+  padding: 80px 0 50px;
+  text-align: center;
+  position: relative;
+}
+
+.title {
+  font-size: clamp(22px, 4.5vw, 56px);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.title em {
+  font-style: normal;
+  color: var(--red);
+}
+
+.sub {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ─── Split Area ─────────────────────────── */
+.splitArea {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  /* overflow visible so images can grow upward */
+  overflow: visible;
+}
+
+.splitBg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 0;
+}
+
+.bgLeft {
+  flex: 1;
+  background: #080808;
+}
+
+.bgRight {
+  flex: 1;
+  background: #E31E24;
+}
+
+/* ─── Text grid ───────────────────────────── */
+.splitInner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  width: 100%;
+}
+
+/* Left Column */
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 40px 300px 40px 60px;
+  position: relative;
+  z-index: 3;
+}
+
+/* Right Column */
+.colRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 40px 60px 40px 400px;
+  position: relative;
+  z-index: 3;
+}
+
+.colTitleOther,
+.colTitleMekark {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.colTitleOther {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.colTitleMekark {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.listItemOther,
+.listItemMekark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.listItemOther {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.listItemMekark {
+  color: var(--white);
+}
+
+.iconX {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.iconCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.bottomTextOther,
+.bottomTextMekark {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.bottomTextOther {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.bottomTextMekark {
+  color: var(--white);
+  text-align: right;
+}
+
+/* ─── Image clip containers ──────────────────
+   Each container covers exactly one half of splitArea
+   with overflow:hidden — this clips the image so it
+   only shows on its own background side.
+   The images themselves are positioned so their inner
+   edge goes past center, creating the overlap illusion.
+─────────────────────────────────────────────────── */
+.colCenter {
+  display: none;
+}
+
+/* Left clip: absolute, covers left half, overflow hidden */
+.imgClipLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Right clip: absolute, covers right half, overflow hidden */
+.imgClipRight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Crane image: right-anchored inside the left clip.
+   Its right edge sits at the clip boundary (50% line).
+   Negative right value pulls it to butt against the edge. */
+.imgLeft {
+  position: absolute;
+  bottom: 0;
+  right: -320px;
+  width: clamp(500px, 52vw, 600px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: bottom right;
+  max-height: 190%;
+}
+
+.imgRight {
+  position: absolute;
+  bottom: 0;
+  left: -265px;
+  width: clamp(420px, 42vw, 500px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: bottom left;
+  max-height: 180%;
+}
+
+/* ─── Responsive ──────────────────────────── */
+@media (max-width: 1280px) {
+  .colLeft {
+    padding: 40px 240px 40px 50px;
+  }
+
+  .colRight {
+    padding: 40px 50px 40px 320px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .splitArea {
+    height: 400px;
+  }
+
+  .colLeft {
+    padding: 36px 200px 36px 40px;
+  }
+
+  .colRight {
+    padding: 36px 40px 36px 260px;
+  }
+
+  .imgLeft,
+  .imgRight {
+    width: clamp(260px, 26vw, 380px);
+  }
+}
+
+@media (max-width: 768px) {
+  .splitArea {
+    height: auto;
+    overflow: hidden;
+  }
+
+  .splitBg {
+    flex-direction: column;
+  }
+
+  .splitInner {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .colLeft {
+    padding: 40px 24px;
+    background: #080808;
+  }
+
+  .colRight {
+    padding: 40px 24px;
+    background: #E31E24;
+  }
+
+  .imgClipLeft,
+  .imgClipRight {
+    display: none;
+  }
+
+  .bottomTextMekark {
+    text-align: left;
+  }
+
+  .bottomTextOther,
+  .bottomTextMekark {
+    padding-top: 32px;
+  }
+
+  .title {
+    font-size: clamp(20px, 7vw, 40px);
+  }
+}

@@ -1,0 +1,168 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  /* Solid black from the very start — matches Figma */
+  background: #111111;
+  /* Faint line matching original design */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.scrolled {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.inner {
+  display: flex;
+  align-items: stretch;
+  height: 63px;
+  width: 100%;
+  padding: 0 45px;
+}
+
+/* ─── Logo — red background box with left gap matching Figma ─── */
+.logoBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  padding: 0 35px;
+  flex-shrink: 0;
+  transition: background 0.25s;
+  /* Add 35px margin as requested */
+  margin-left: 65px;
+}
+
+.logoBox:hover {
+  background: var(--red-dark);
+}
+
+/* ─── Nav links ──────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-left: auto;
+  padding-right: 0;
+}
+
+.navLink {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: rgba(255, 255, 255, 0.72);
+  padding: 0 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Burger (right side like Figma) ──────────────── */
+.burger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  cursor: pointer;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 100%;
+  transition: background 0.2s;
+}
+
+.burger:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ─── Mobile Menu ─────────────────────────────────── */
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  background: #0D0D0D;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.mobileOpen {
+  max-height: 500px;
+}
+
+.mobileLink {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: rgba(255, 255, 255, 0.72);
+  padding: 15px 28px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.mobileLink:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.mobileCta {
+  margin: 12px 28px 20px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 14px 24px;
+  text-align: center;
+  transition: background 0.25s;
+}
+
+.mobileCta:hover {
+  background: var(--red-dark);
+}
+
+@media (max-width: 900px) {
+  .nav {
+    display: none;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+
+  .logoBox {
+    padding: 0 20px;
+    margin-left: 0;
+  }
+}

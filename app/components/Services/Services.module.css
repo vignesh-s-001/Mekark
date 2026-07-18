@@ -1,0 +1,251 @@
+.section {
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Top Red Banner ─────────────────────────── */
+.topBanner {
+  background: #E31E24;
+  padding: 60px 0 60px;
+  /* Reduced top padding */
+}
+
+.bannerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.bannerTitle {
+  color: var(--white);
+  font-size: clamp(16px, 3vw, 32px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+  max-width: 500px;
+}
+
+.bannerBtn {
+  background: var(--black);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 16px 28px;
+  /* Reduced button padding */
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.bannerBtn:hover {
+  background: #222;
+}
+
+/* ─── Image Area with Isolated Background ─────── */
+.heroImageSection {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.heroBgGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 70%, var(--black) 100%);
+}
+
+.workersWrap {
+  position: relative;
+  z-index: 2;
+  margin-top: -180px;
+  /* Pulls workers up over the red banner */
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.workersWrap img {
+  max-width: 580px;
+  /* Reduced size based on original design */
+  width: 100%;
+  display: block;
+}
+
+/* ─── Main Content (Dark Theme) ──────────────── */
+.mainContent {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 100px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.title em {
+  font-style: normal;
+  color: var(--red);
+}
+
+/* ─── Grid & Cards ───────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  position: relative;
+  background: #1d1d1d;
+  /* Dark background */
+  border-radius: 16px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s, transform 0.3s;
+  animation: fadeInUp 0.6s ease both;
+  overflow: hidden;
+}
+
+.card:hover {
+  background: #161616;
+  transform: translateY(-4px);
+}
+
+.cardNum {
+  font-size: 60px;
+  font-weight: 800;
+  color: #2c2c2c;
+  /* Very faint dark gray */
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 30px;
+  transition: color 0.3s;
+}
+
+/* Highlight the last card's number (06) */
+.cardHighlight .cardNum {
+  color: rgba(70, 69, 69, 0.2);
+  /* Faint red */
+}
+
+.cardContent {
+  position: relative;
+  z-index: 2;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.cardDesc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .workersWrap {
+    margin-top: -80px;
+  }
+
+  .workersWrap img {
+    max-width: 360px;
+  }
+
+  .bannerInner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bannerBtn {
+    white-space: nowrap;
+    width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topBanner {
+    padding: 40px 0;
+  }
+
+  .bannerTitle {
+    font-size: clamp(15px, 4.5vw, 22px);
+  }
+
+  .bannerBtn {
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    padding: 14px 16px;
+    white-space: normal;
+    letter-spacing: 0.5px;
+  }
+
+  .workersWrap {
+    margin-top: -60px;
+  }
+
+  .workersWrap img {
+    max-width: 280px;
+  }
+
+  .title {
+    font-size: clamp(20px, 7vw, 36px);
+  }
+}

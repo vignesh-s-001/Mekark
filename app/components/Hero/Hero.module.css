@@ -1,0 +1,300 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+  background: var(--black);
+  padding: 0 45px;
+}
+
+/* ─── Background ─────────────────────────────────── */
+.bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 45px;
+  right: 45px;
+  /* Left, right borders matching original design */
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  /* Solid dark black shadow on the left up to the text (65px), fading smoothly to the right. */
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.95) 65px,
+      rgba(0, 0, 0, 0.4) 40%,
+      transparent 80%);
+}
+
+/* ─── Bottom-right dark corner (matches Figma accent) ─ */
+.cornerDark {
+  display: none;
+}
+
+/* ─── Content ────────────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 2;
+  /* 35px padding aligns with the MEKARK text inside the logoBox */
+  padding-left: 65px;
+  padding-right: 40px;
+  margin-top: auto;
+  padding-bottom: 0;
+  padding-top: 63px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+  animation: fadeInUp 0.8s ease both;
+  /* Moved texts a little up */
+  margin-bottom: 60px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Headline ───────────────────────────────────── */
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 20px;
+}
+
+/* Line 1: plain white text */
+.line1 {
+  font-size: clamp(26px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.18;
+  letter-spacing: -0.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Line 2: full-width red strip fading to transparent on right — SINGLE LINE */
+.line2 {
+  font-size: clamp(26px, 4vw, 52px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.18;
+  letter-spacing: -0.5px;
+  /* Faded red background fades to transparent on the right */
+  background: linear-gradient(90deg, #ba1f1f 60%, rgba(209, 37, 41, 0.4) 80%, rgba(209, 37, 41, 0) 100%);
+  display: block;
+  padding: 6px 200px 10px 0;
+  /* Force single line */
+  white-space: nowrap;
+  /* Pull left to perfectly match the logoBox edge / image edge (0px) */
+  margin-left: -65px;
+  /* Push text back to 65px so it perfectly aligns with 'Warehouse Contractors' */
+  padding-left: 65px;
+}
+
+/* ─── Sub text ───────────────────────────────────── */
+.sub {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  margin-top: 4px;
+}
+
+/* ─── Inline Badge chips & CTA ───────────────────── */
+.ctaWrapper {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  /* Forces the button to perfectly match the badges width */
+  margin-bottom: 60px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  /* Touching horizontally */
+  margin-bottom: 16px;
+  /* Added gap between badges and button */
+}
+
+.badge {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 5px 15px;
+  background: rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.2px;
+}
+
+/* Prevent double borders where badges touch */
+.badge+.badge {
+  border-left: none;
+}
+
+/* ─── CTA button ─────────────────────────────────── */
+.btnRed {
+  display: block;
+  width: 80%;
+  /* Matches the width of the badges container above it */
+  text-align: center;
+  /* Faded red color */
+  background: #c72828;
+  color: var(--white);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  /* Reduced vertical padding to decrease button height */
+  padding: 15px 13px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s;
+  /* Bottom-right corner cut */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+
+.btnRed:hover {
+  background: var(--red-dark);
+}
+
+/* ─── Ticker ─────────────────────────────────────── */
+.ticker {
+  position: relative;
+  z-index: 2;
+  background: var(--red);
+  overflow: hidden;
+  padding: 12px 0;
+}
+
+.tickerInner {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 28s linear infinite;
+}
+
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.tickerItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--white);
+  padding: 0 20px;
+  white-space: nowrap;
+}
+
+.tickerDiamond {
+  font-size: 6px;
+  opacity: 0.65;
+}
+
+/* ─── Responsive ─────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero {
+    padding: 0;
+  }
+
+  .bg {
+    left: 0;
+    right: 0;
+  }
+
+  .cornerDark {
+    right: 0;
+  }
+
+  .line1,
+  .line2 {
+    font-size: clamp(22px, 5.5vw, 40px);
+  }
+
+  .line2 {
+    white-space: normal;
+    padding-right: 40px;
+  }
+
+  .content {
+    padding-left: 28px;
+  }
+
+  .line2 {
+    margin-left: -28px;
+    padding-left: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .line1,
+  .line2 {
+    font-size: clamp(20px, 7vw, 34px);
+  }
+
+  .content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .line2 {
+    margin-left: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    white-space: normal;
+  }
+
+  /* Fix ctaWrapper to not overflow */
+  .ctaWrapper {
+    width: 100%;
+  }
+
+  /* Allow badges to wrap on small screens */
+  .badges {
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  /* Full-width button on mobile */
+  .btnRed {
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 14px 20px;
+    font-size: 11px;
+  }
+}

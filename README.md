@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mekark — Infrastructure & Manufacturing Web Platform
 
-## Getting Started
+Mekark is a high-performance, responsive marketing website built to showcase enterprise-grade infrastructure and manufacturing capabilities. Developed with a focus on pixel-perfect Figma translation, the platform features a premium dark UI aesthetic, smooth scroll-triggered animations, and a modular architecture.
 
-First, run the development server:
+## Project Overview
 
+This project was built from the ground up using a modern tech stack to ensure fast load times, excellent SEO, and flawless rendering across all device sizes (from large desktop monitors down to 320px mobile screens). 
+
+### Key Features
+- **Responsive Design**: Fluid typography (`clamp()`), CSS Grid layouts, and comprehensive media queries ensure the site looks perfect on any device.
+- **Dark Theme Aesthetics**: Utilizes a deep dark color palette (`var(--black)`, `#0a0a0a`) with vibrant red accents (`var(--red)`) to convey an industrial, premium feel.
+- **Scroll Animations**: Implements `IntersectionObserver` to trigger subtle fade-in and slide-up animations as components enter the viewport.
+- **Modular CSS**: Styling is scoped locally to components using CSS Modules, preventing global style conflicts and maintaining clean code.
+- **Pixel-Perfect**: Carefully crafted to match the original Figma designs, including intricate overlapping layouts and split-screen columns.
+
+### Tech Stack
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **UI Library**: React
+- **Styling**: Vanilla CSS Modules
+- **Language**: TypeScript
+
+---
+
+## How to Run the Project Locally
+
+To run this project on your local machine, follow these steps:
+
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine (v18.0.0 or higher is recommended).
+
+### 1. Install Dependencies
+Open your terminal in the project's root directory (`mekark-app`) and run:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Start the Development Server
+Once the dependencies are installed, start the local development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. View the Site
+Open your browser and navigate to:
+[http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The page will automatically reload if you make any edits to the code.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/app`: Contains the main Next.js layout, page, and global styles.
+- `/app/components`: Contains all modular sections of the website (e.g., `Hero`, `Services`, `About`, `Testimonials`, etc.). Each component has its own `.tsx` file and `.module.css` file.
+- `/public/assets`: Stores all static assets like images, icons, and logos used throughout the site.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Build for Production
 
-## Deploy on Vercel
+When you are ready to deploy the site to production, generate an optimized build by running:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then, to test the production build locally, run:
+
+```bash
+npm run start
+```
