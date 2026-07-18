@@ -38,7 +38,7 @@ export default function Consultation() {
         <div className={styles.ctaRow}>
           <button
             className={styles.btnPrimary}
-            onClick={() => document.querySelector("#consultation")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => window.location.href = "mailto:info@mekarkstructure.com"}
           >
             REQUEST PROJECT CONSULTATION
           </button>
