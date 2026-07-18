@@ -57,7 +57,10 @@ export default function Services() {
           <h2 className={styles.bannerTitle}>
             Execution control begins with<br/>manufacturing strength.
           </h2>
-          <button className={styles.bannerBtn}>
+          <button 
+            className={styles.bannerBtn}
+            onClick={() => document.querySelector("#consultation")?.scrollIntoView({ behavior: "smooth" })}
+          >
             SCHEDULE A TECHNICAL CONSULTATION &rarr;
           </button>
         </div>
