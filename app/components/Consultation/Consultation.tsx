@@ -36,12 +36,13 @@ export default function Consultation() {
         </h2>
 
         <div className={styles.ctaRow}>
-          <button
+          <a
+            href="mailto:info@mekarkstructure.com"
             className={styles.btnPrimary}
-            onClick={() => window.location.href = "mailto:info@mekarkstructure.com"}
+            style={{ display: "inline-block", textDecoration: "none" }}
           >
             REQUEST PROJECT CONSULTATION
-          </button>
+          </a>
           <span className={styles.btnGhost}>TODAY</span>
         </div>
 
