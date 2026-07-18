@@ -158,11 +158,16 @@
   }
 
   .inner {
-    padding: 0 20px;
+    padding: 0;
   }
 
   .logoBox {
-    padding: 0 20px;
+    padding: 0 24px;
     margin-left: 0;
+  }
+
+  .burger {
+    margin-left: auto;
+    padding: 0 24px;
   }
 }

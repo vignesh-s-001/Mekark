@@ -150,16 +150,16 @@
     padding: 28px 20px 24px;
   }
 
-  /* Stack image below quote on mobile */
+  /* Side-by-side image on mobile, smaller dimensions to prevent massive scaling */
   .cardTop {
-    flex-direction: column;
+    flex-direction: row;
     gap: 16px;
   }
 
   .imgWrap {
-    width: 100%;
-    height: 180px;
-    border-radius: 6px;
+    width: 90px;
+    height: 110px;
+    border-radius: 4px;
   }
 
   .title {
